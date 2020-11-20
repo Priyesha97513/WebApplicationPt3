@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">LastName</th>
+        <th scope="col">FisrtName</th>
+        <th scope="col">SSN</th>
+        <th scope="col">Test1</th>
+        <th scope="col">Test2</th>
+        <th scope="col">Test3</th>
+        <th scope="col">Test4</th>
+        <th scope="col">Final</th>
+        <th scope="col">Grade</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for city in cities %}
+    <tr>
+        <td><a href="view/{{grades.id}}">{{ grades.LastName }}</a></td>
+        <td>{{ grades.FirstName }}</td>
+        <td>{{ grades.SSN }}</td>
+        <td>{{ grades.Test1 }}</td>
+        <td>{{ grades.Test2 }}</td>
+        <td>{{ grades.Test3 }}</td>
+        <td>{{ grades.Test4 }}</td>
+        <td>{{ grades.Final }}</td>
+        <td>{{ grades.Grade }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
