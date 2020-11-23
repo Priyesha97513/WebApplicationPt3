@@ -15,17 +15,17 @@
     </tr>
     </thead>
     <tbody>
-    {% for city in cities %}
+    {% for grades1 in grades %}
     <tr>
-        <td><a href="view/{{grades.id}}">{{ grades.LastName }}</a></td>
-        <td>{{ grades.FirstName }}</td>
-        <td>{{ grades.SSN }}</td>
-        <td>{{ grades.Test1 }}</td>
-        <td>{{ grades.Test2 }}</td>
-        <td>{{ grades.Test3 }}</td>
-        <td>{{ grades.Test4 }}</td>
-        <td>{{ grades.Final }}</td>
-        <td>{{ grades.Grade }}</td>
+        <td><a href="view/{{grades1.id}}">{{ grades1.LastName }}</a></td>
+        <td>{{ grades1.FirstName }}</td>
+        <td>{{ grades1.SSN }}</td>
+        <td>{{ grades1.Test1 }}</td>
+        <td>{{ grades1.Test2 }}</td>
+        <td>{{ grades1.Test3 }}</td>
+        <td>{{ grades1.Test4 }}</td>
+        <td>{{ grades1.Final }}</td>
+        <td>{{ grades1.Grade }}</td>
     </tr>
     {% endfor %}
     </tbody>

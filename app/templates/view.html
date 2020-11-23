@@ -2,22 +2,22 @@
 {% block content %}
 
 <div class="card" class="m-5 p-2">
-    <h5 class="card-title">{{ grades.LastName }} - {{ grades.FirstName }}</h5>
+    <h5 class="card-title">{{ grades1.LastName }} - {{ grades1.FirstName }}</h5>
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ grades.SSN }}</li>
-        <li class="list-group-item">{{ grades.Test1 }}</li>
-        <li class="list-group-item">{{ grades.Test2 }}</li>
-        <li class="list-group-item">{{ grades.Test3 }}</li>
-        <li class="list-group-item">{{ grades.Test4 }}</li>
-        <li class="list-group-item">{{ grades.Final }}</li>
-        <li class="list-group-item">{{ grades.Grade }}</li>
+        <li class="list-group-item">SSN: {{ grades1.SSN }}</li>
+        <li class="list-group-item">Test1: {{ grades1.Test1 }}</li>
+        <li class="list-group-item">Test2: {{ grades1.Test2 }}</li>
+        <li class="list-group-item">Test3: {{ grades1.Test3 }}</li>
+        <li class="list-group-item">Test4: {{ grades1.Test4 }}</li>
+        <li class="list-group-item">Final: {{ grades1.Final }}</li>
+        <li class="list-group-item">Grade: {{ grades1.Grade }}</li>
     </ul>
     <div class="card-body">
-        <a href="/edit/{{grades.id}}" class="card-link btn btn-primary">edit</a>
+        <a href="/edit/{{grades1.id}}" class="card-link btn btn-primary">edit</a>
     </div>
 </div>
-<form action="/delete/{{grades.id}}" method="post"><button type="Delete" class="btn btn-danger">Save</button></form>
+<form action="/delete/{{grades1.id}}" method="post"><button type="submit" class="btn btn-danger">Delete</button></form>
 
 
 {% endblock %}
