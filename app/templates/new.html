@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<form action="/Grades/new" method="POST">
+<form action="/grades/new" method="POST">
     <div class="row">
         <div class="col">
             <label for="LastName">Last Name</label>
@@ -8,7 +8,7 @@
         </div>
         <div class="col">
             <label for="FirstName">First Name</label>
-            <input id="FirstName" t ype="text" class="form-control" placeholder="FirstName"
+            <input id="FirstName" type="text" class="form-control" placeholder="FirstName"
                    name="FistName">
         </div>
         <div class="col">
@@ -56,3 +56,4 @@
 </form>
 
 {% endblock %}
+

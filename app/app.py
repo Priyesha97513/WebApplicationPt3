@@ -8,7 +8,7 @@ from pymysql.cursors import DictCursor
 app = Flask(__name__)
 mysql = MySQL(cursorclass=DictCursor)
 
-app.config['MYSQL_DATABASE_HOST'] = 'db'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'Nj1T531153@!'
 app.config['MYSQL_DATABASE_PORT'] = 3306
@@ -22,27 +22,27 @@ def index():
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM grades')
     result = cursor.fetchall()
-    return render_template('index.html', title='Home', user=user, cities=result)
+    return render_template('index.html', title='Home', user=user, grades=result)
 
 
-@app.route('/view/<int:grades_id>', methods=['GET'])
-def record_view(grades_id):
+@app.route('/view/<int:grades1_id>', methods=['GET'])
+def record_view(grades1_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM grades WHERE id=%s', grades_id)
+    cursor.execute('SELECT * FROM grades WHERE id=%s', grades1_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', city=result[0])
+    return render_template('view.html', title='View Form', grades1=result[0])
 
 
-@app.route('/edit/<int:grades_id>', methods=['GET'])
-def form_edit_get(grades_id):
+@app.route('/edit/<int:grades1_id>', methods=['GET'])
+def form_edit_get(grades1_id):
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM grades WHERE id=%s', grades_id)
+    cursor.execute('SELECT * FROM grades WHERE id=%s', grades1_id)
     result = cursor.fetchall()
-    return render_template('edit.html', title='Edit Form', city=result[0])
+    return render_template('edit.html', title='Edit Form', grades1=result[0])
 
 
-@app.route('/edit/<int:grades_id>', methods=['POST'])
-def form_update_post(grades_id):
+@app.route('/edit/<int:grades1_id>', methods=['POST'])
+def form_update_post(grades1_id):
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('LastName'), request.form.get('FirstName'), request.form.get('SSN'),
                  request.form.get('Test1'), request.form.get('Test2'),
@@ -53,12 +53,12 @@ def form_update_post(grades_id):
     mysql.get_db().commit()
     return redirect("/", code=302)
 
-@app.route('/Grades/new', methods=['GET'])
+@app.route('/grades/new', methods=['GET'])
 def form_insert_get():
     return render_template('new.html', title='New Grades Form')
 
 
-@app.route('/Grades/new', methods=['POST'])
+@app.route('/grades/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('LastName'), request.form.get('FirstName'), request.form.get('SSN'),
@@ -71,16 +71,16 @@ def form_insert_post():
 
 
 
-@app.route('/delete/<int:grades_id>', methods=['POST'])
-def form_delete_post(grades_id):
+@app.route('/delete/<int:grades1_id>', methods=['POST'])
+def form_delete_post(grades1_id):
     cursor = mysql.get_db().cursor()
     sql_delete_query = """DELETE FROM grades WHERE id = %s """
-    cursor.execute(sql_delete_query, grades_id)
+    cursor.execute(sql_delete_query, grades1_id)
     mysql.get_db().commit()
     return redirect("/", code=302)
 
 
-@app.route('/api/v1/Grades', methods=['GET'])
+@app.route('/api/v1/grades', methods=['GET'])
 def api_browse() -> str:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM grades')
@@ -90,29 +90,29 @@ def api_browse() -> str:
     return resp
 
 
-@app.route('/api/v1/Grades/<int:grades_id>', methods=['GET'])
-def api_retrieve(grades_id) -> str:
+@app.route('/api/v1/grades/<int:grades1_id>', methods=['GET'])
+def api_retrieve(grades1_id) -> str:
     cursor = mysql.get_db().cursor()
-    cursor.execute('SELECT * FROM grades WHERE id=%s', grades_id)
+    cursor.execute('SELECT * FROM grades WHERE id=%s', grades1_id)
     result = cursor.fetchall()
     json_result = json.dumps(result);
     resp = Response(json_result, status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/Grades/', methods=['POST'])
+@app.route('/api/v1/grades/', methods=['POST'])
 def api_add() -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/Grades/<int:grades_id>', methods=['PUT'])
+@app.route('/api/v1/grades/<int:grades1_id>', methods=['PUT'])
 def api_edit(grades_id) -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
-@app.route('/api/Grades/<int:grades_id>', methods=['DELETE'])
+@app.route('/api/grades/<int:grades1_id>', methods=['DELETE'])
 def api_delete(grades_id) -> str:
     resp = Response(status=210, mimetype='application/json')
     return resp
