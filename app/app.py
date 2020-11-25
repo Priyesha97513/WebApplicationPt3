@@ -46,7 +46,7 @@ def form_update_post(grades1_id):
     cursor = mysql.get_db().cursor()
     inputData = (request.form.get('LastName'), request.form.get('FirstName'), request.form.get('SSN'),
                  request.form.get('Test1'), request.form.get('Test2'),
-                 request.form.get('Test3'), request.form.get('Test4'),request.form.get('Final'),request.form.get('Grade'), grades_id)
+                 request.form.get('Test3'), request.form.get('Test4'),request.form.get('Final'),request.form.get('Grade'), grades1_id)
     sql_update_query = """UPDATE grades t SET t.LastName = %s, t.FirstName = %s, t.SSN = %s, t.Test1 = 
     %s, t.Test2 = %s, t.Test3 = %s, t.Test4 = %s,t.Final= %s,t.Grade = %s  WHERE t.id = %s """
     cursor.execute(sql_update_query, inputData)
@@ -61,9 +61,7 @@ def form_insert_get():
 @app.route('/grades/new', methods=['POST'])
 def form_insert_post():
     cursor = mysql.get_db().cursor()
-    inputData = (request.form.get('LastName'), request.form.get('FirstName'), request.form.get('SSN'),
-                 request.form.get('Test1'), request.form.get('Test2'),
-                 request.form.get('Test3'), request.form.get('Test4'), request.form.get('Final'), request.form.get('Grade'),grades_id)
+    inputData = (request.form.get('LastName'), request.form.get('FirstName'), request.form.get('SSN'),request.form.get('Test1'), request.form.get('Test2'),request.form.get('Test3'), request.form.get('Test4'), request.form.get('Final'), request.form.get('Grade'),grades1_id)
     sql_insert_query = """INSERT INTO grades (LastName,FirstName,SSN,Test1,Test2,Test3,Test4,Final,Grade) VALUES (%s, %s,%s, %s,%s, %s,%s,%s,%s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
@@ -107,13 +105,13 @@ def api_add() -> str:
 
 
 @app.route('/api/v1/grades/<int:grades1_id>', methods=['PUT'])
-def api_edit(grades_id) -> str:
+def api_edit(grades1_id) -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
 @app.route('/api/grades/<int:grades1_id>', methods=['DELETE'])
-def api_delete(grades_id) -> str:
+def api_delete(grades1_id) -> str:
     resp = Response(status=210, mimetype='application/json')
     return resp
 
