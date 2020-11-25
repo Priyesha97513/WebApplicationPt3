@@ -3,8 +3,8 @@ use new_schema2;
 
 CREATE TABLE IF NOT EXISTS grades (
     `id` int AUTO_INCREMENT,
-    `Last_name` VARCHAR(9) CHARACTER SET utf8,
-    `First_name` VARCHAR(16) CHARACTER SET utf8,
+    `Last_name` VARCHAR(50) CHARACTER SET utf8,
+    `First_name` VARCHAR(50) CHARACTER SET utf8,
     `SSN` VARCHAR(21) CHARACTER SET utf8,
     `Test1` VARCHAR(14) CHARACTER SET utf8,
     `Test2` NUMERIC(3, 1),
@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS grades (
     `Test4` NUMERIC(3, 1),
     `Final` VARCHAR(8) CHARACTER SET utf8,
     `Grade` VARCHAR(7) CHARACTER SET utf8,
-      PRIMARY KEY (`id`)
+     PRIMARY KEY (`id`)
 );
-INSERT INTO grades (LastName,FirstName,SSN,Test1,Test2,Test3,Test4,Final,Grade) VALUES
+INSERT INTO grades VALUES
     ('Alfalfa','   "Aloysius"','   "123-45-6789"',' 40.0',    90.0,   100.0,    83.0,'    49.0','   "D-"'),
     ('Alfred','    "University"',' "123-12-1234"',' 41.0',    97.0,    96.0,    97.0,'    48.0','   "D+"'),
     ('Gerty','     "Gramma"','     "567-89-0123"',' 41.0',    80.0,    60.0,    40.0,'    44.0','   "C"'),
@@ -31,4 +31,3 @@ INSERT INTO grades (LastName,FirstName,SSN,Test1,Test2,Test3,Test4,Final,Grade) 
     ('Franklin','  "Benny"','      "234-56-2890"',' 50.0',     1.0,    90.0,    80.0,'    90.0','   "B-"'),
     ('George','    "Boy"','        "345-67-3901"',' 40.0',     1.0,    11.0,    -1.0,'     4.0','   "B"'),
     ('Heffalump',' "Harvey"','     "632-79-9439"',' 30.0',     1.0,    20.0,    30.0,'    40.0','   "C"');
-
