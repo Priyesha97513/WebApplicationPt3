@@ -2,9 +2,9 @@
 {% block content %}
 <table class="table">
     <thead>
-    <tr>
-        <th scope="col">LastName</th>
-        <th scope="col">FisrtName</th>
+      <tr>
+        <th scope="col">Last_name</th>
+        <th scope="col">First_name</th>
         <th scope="col">SSN</th>
         <th scope="col">Test1</th>
         <th scope="col">Test2</th>
@@ -12,13 +12,13 @@
         <th scope="col">Test4</th>
         <th scope="col">Final</th>
         <th scope="col">Grade</th>
-    </tr>
+      </tr>
     </thead>
     <tbody>
     {% for grades1 in grades %}
     <tr>
-        <td><a href="view/{{grades1.id}}">{{ grades1.LastName }}</a></td>
-        <td>{{ grades1.FirstName }}</td>
+        <td><a href="view/{{grades1.id}}/">{{ grades1.Last_name }}</a></td>
+        <td>{{ grades1.First_name }}</td>
         <td>{{ grades1.SSN }}</td>
         <td>{{ grades1.Test1 }}</td>
         <td>{{ grades1.Test2 }}</td>
@@ -28,6 +28,6 @@
         <td>{{ grades1.Grade }}</td>
     </tr>
     {% endfor %}
-    </tbody>
+     </tbody>
 </table>
 {% endblock %}
